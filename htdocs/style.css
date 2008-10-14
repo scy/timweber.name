@@ -1,0 +1,111 @@
+body, * {
+	background-color:#fff;
+	font-family:Trebuchet,"Trebuchet MS",Tahoma,Verdana,Arial,Helvetica,sans-serif;
+	line-height:150%;
+}
+
+body {
+	text-align:center;
+}
+
+div#body {
+	width:750px;
+	max-width:750px;
+	min-width:750px;
+	margin:2em auto;
+	text-align:left;
+}
+
+th, td {
+	vertical-align:top;
+}
+
+table {
+	width:100%;
+}
+
+span.a {
+	font-weight:lighter;
+	color:#999;
+}
+
+span.b {
+	font-weight:bold;
+}
+
+span.ann {
+	font-style:italic;
+	color:#444;
+}
+
+p {
+	margin:0 0 0.5em;
+}
+
+code {
+	font-style:italic;
+	color:#444;
+}
+
+ul {
+	margin:0;
+	padding:0 0 0 1em;
+}
+
+h1, h2 {
+	color:#666;
+	text-transform:lowercase;
+	font-weight:normal;
+	border-bottom:2px solid #ddd;
+	margin:0.2em 0 0.8em 0;
+}
+
+th {
+	text-align:right;
+	padding-right:2em;
+	width:12em;
+	white-space:nowrap;
+	font-style:normal;
+	font-weight:bold;
+}
+
+table#address {
+	margin-left:50px;
+}
+
+td#portrait {
+	padding:0px 30px 0px 0px;
+	width:234px;
+}
+
+h1 {
+	font-size:50px;
+}
+
+h1 span.b {
+	position:relative;
+	left:-0.25em;
+}
+
+td#basics table {
+	white-space:nowrap;
+	width:1%;
+}
+
+td#basics address {
+	margin-bottom:1em;
+}
+
+h2 {
+	margin-top:2em;
+}
+
+table.cv td {
+	padding-bottom:0.6em;
+}
+
+p#private {
+	font-size:75%;
+	text-align:right;
+	margin:4em 0;
+}

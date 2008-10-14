@@ -1,0 +1,33 @@
+<!--#set var="title" value="PHP-Erfahrung" --><!--#include file="_head.html" -->
+		<h2><span class="b">PHP</span><span class="a">-Erfahrung</span></h2>
+		<table class="cv">
+			<tr><th>Projekt: qb</th><td>
+				<p>Aus Unzufriedenheit mit allen existierenden Softwarelösungen zum Erstellen eines Weblogs (z.B. Serendipity, Wordpress oder Movable Type) entstand in nur einem Tag das seit Februar&nbsp;2007 auf meiner privaten Website eingesetzte Blogsystem <strong>qb</strong> (kurz für <em>quick blogging</em>).</p>
+				<p>Bei seiner Entwicklung wurde der Fokus auf Einfachheit gelegt: Alle Artikel bestehen aus einfachen Textdateien, die nach Erstellungsdatum sortiert werden und HTML-Quelltext sowie Metadaten enthalten. Um das Erstellen von Einträgen nicht unnötig zu verkomplizieren, ist die Definition von regulären Ausdrücken möglich, mit denen komplexere aber oft gebrauchte HTML-Ausdrücke wie das Einfügen eines Hyperlinks oder eines Bildes "abgekürzt" werden kann. Außerdem ist <em>qb</em> trotz seiner Einfachheit sehr performant: Die momentan über 430 Einträge in meinem Blog werden ohne eigens implementierten Cache blitzschnell dargestellt.</p>
+				<p>Die Veröffentlichung von <em>qb</em> als freie Software ist geplant, ein genauer Zeitpunkt allerdings aufgrund nötigen Refactorings (dem Code sieht man durchaus an, dass er an einem Tag entwickelt wurde) nicht absehbar.</p>
+				<p>Einen Eindruck von <em>qb</em> können Sie sich über die folgenden Links verschaffen:</p>
+				<ul>
+					<li><em>qb's</em> <a href="http://scytale.name/proj/qb/">Projektseite</a></li>
+					<li><em>qb</em> in Aktion: <a href="http://scytale.name/blog/">mein Blog</a>, <a href="http://scytale.name/blog/2007/02/">gefiltert nach Einträgen vom Februar&nbsp;2007</a></li>
+					<li><a href="http://scytale.name/git/gitweb.cgi?p=qb.git;a=blob;f=qb.php;h=f51a2b714ff0c4e4b065e6f88938107ab3891fb1;hb=96548818206c9d9d6f7b32a8e9ad74617f56895a">Quelltext der Version 0.2.2</a>, der wie bereits erwähnt einer Überarbeitung bedarf</li>
+					<li><a href="http://scytale.name/git/gitweb.cgi?p=qb.git;a=blob;f=qb.cfg.php;h=2be5c0b7a5d1fb93daad1d8994673ce9b2a17f43;hb=96548818206c9d9d6f7b32a8e9ad74617f56895a">Beispielkonfigurationsdatei der Version 0.2.2</a> zur Demonstration der verwendeten regulären Ausdrücke</li>
+				</ul>
+			</td></tr>
+			<tr><th>Sicherheit: Praktisches</th><td>
+				<p>Ein <em>Capture the Flag Hacking Contest</em> ist ein Wettbewerb, bei dem in einer kontrollierten Spielsituation mehrere Teams ein vorher unbekanntes, aber bei jedem Team zu Anfang identisches Server-Image ausgehändigt bekommen, auf dem mehrere in unterschiedlichen Programmiersprachen geschriebene und absichtlich mit Sicherheitslücken versehene Dienste laufen. Aufgabe der Spieler ist es unter anderem, fremden, unkommentierten Code unter Zeitdruck zu verstehen und Sicherheitslücken darin aufzufinden und zu beheben. Gefundene Sicherheitslücken kann man wiederum zu Angriffen auf konkurrierende Teams verwenden.</p>
+				<p>Seit dem Jahr 2005 nehme ich an solchen Wettbewerben teil und bin in meinem Team unter anderem für PHP-basierte Dienste zuständig, habe also Erfahrung im Umgang mit völlig fremdem Quellcode. Ich kann mich sowohl in die Rolle eines potenziellen Angreifers als auch eines "Verteidigers" versetzen und habe ein Auge für Sicherheitslücken, auch für kompliziertere mehrstufige oder nur im Zusammenspiel ausnutzbare Schwachstellen.</p>
+			</td></tr>
+			<tr><th>Sicherheit: Theoretisches</th><td>
+				<p>Im Rahmen meines Studiums, aber auch aus privatem Interesse, habe ich mir eine umfassende Bildung im Bereich IT-Sicherheit angeeignet. Dadurch bin ich in der Lage, Sicherheitslücken in PHP-Anwendungen auf allen involvierten Schichten nachvollziehen zu können.</p>
+				<p>Beispielsweise ist mein Wissen nicht auf die Gefahren von PHP-Eigenheiten wie URLs in <code>include</code>-Befehlen begrenzt, sondern erstreckt sich auch über das Abfangen oder Verändern von Cookies, Netzwerkmanipulationen wie IP-Spoofing, logische Fehler im Code bis hin zu Buffer Overflows im PHP-Interpreter selbst.</p>
+				<p>Als Teilnehmer des Hacker-Seminars des Lehrstuhls für Praktische Informatik&nbsp;I der Universität Mannheim habe ich eine <a href="http://scytale.name/files/talks/phpsecurity/phpsecurity.pdf">Ausarbeitung zum Thema PHP-Sicherheit</a> verfasst, die einige der häufigsten Fehler und Gegenmaßnahmen anspricht. Die darin beschriebenen Schwachstellen habe ich bereits mehrere Male zu unterschiedlichen Anlässen zu einem Vortrag aufgearbeitet.</p>
+			</td></tr>
+			<tr><th>Script: JavaScript-Counter</th><td>
+				<p>Ein Bekannter sprach mich darauf an, dass er gerne einen Besucherzähler für seine Website hätte, den er einfach mittels <code>&lt;script src="..."/&gt;</code> einbauen kann. Der von mir daraufhin auf die Schnelle geschriebene <a href="http://scytale.name/files/code/jscounter/jscounter.php">JavaScript-Counter</a> basiert auf einem PHP-Script, das JavaScript-Code zur Ausgabe des Zählerstandes zurückliefert.</p>
+				<p>Die Besonderheit daran: Der Zähler benötigt keine Datenbank, aber stellt auch ohne Locking-Mechanismen sicher, dass selbst bei höchster Last und gleichzeitig verarbeiteten Zugriffen kein einziger durch Race Conditions unterschlagen wird.</p>
+			</td></tr>
+			<tr><th>und mehr</th><td>
+				<p>Außerdem habe ich einige kleine, nützliche Scripts geschrieben, die aber keine Veröffentlichung wert sind.</p>
+			</td></tr>
+		</table>
+<!--#include file="_foot" -->
