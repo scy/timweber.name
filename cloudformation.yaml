@@ -1,0 +1,134 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: timweber.name and tim-weber.name
+
+Resources:
+
+  # This bucket redirects www.timweber.name to timweber.name (without www.)
+  WWWRedirectBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: www.timweber.name
+      AccessControl: BucketOwnerFullControl
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: timweber.name
+      Tags:
+      - Key: Project
+        Value: timweber
+
+  # This bucket redirects tim-weber.name to timweber.name (without the dash)
+  DashRedirectBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: tim-weber.name
+      AccessControl: BucketOwnerFullControl
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: timweber.name
+      Tags:
+      - Key: Project
+        Value: timweber
+
+  # This bucket redirects www.tim-weber.name to timweber.name (without www. and without the dash)
+  WWWDashRedirectBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: www.tim-weber.name
+      AccessControl: BucketOwnerFullControl
+      WebsiteConfiguration:
+        RedirectAllRequestsTo:
+          HostName: timweber.name
+      Tags:
+      - Key: Project
+        Value: timweber
+
+  # DNS zone without the dash
+  Zone:
+    Type: AWS::Route53::HostedZone
+    Properties:
+      Name: timweber.name.
+      HostedZoneTags:
+      - Key: Project
+        Value: timweber
+
+  # DNS zone with the dash
+  DashZone:
+    Type: AWS::Route53::HostedZone
+    Properties:
+      Name: tim-weber.name.
+      HostedZoneTags:
+      - Key: Project
+        Value: timweber
+
+  # DNS records without the dash
+  Records:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      Comment: timweber.name
+      HostedZoneId: !Ref Zone
+      RecordSets:
+      # Currently, the content is at Uberspace
+      # TODO: move to AWS
+      - Name: timweber.name.
+        Type: A
+        ResourceRecords:
+        - 82.98.87.120
+        TTL: 3600
+      # The www. redirect
+      - Name: www.timweber.name.
+        Type: CNAME
+        ResourceRecords:
+        - !Sub www.timweber.name.s3-website-${AWS::Region}.amazonaws.com
+        TTL: 3600
+      # Currently, Uberspace is the MX
+      # TODO: move to Mailgun, then AWS
+      - Name: timweber.name.
+        Type: MX
+        ResourceRecords:
+        - 10 eridanus.uberspace.de
+        TTL: 3600
+      # Mailgun records
+      - Name: timweber.name.
+        Type: TXT
+        ResourceRecords: [ '"v=spf1 include:mailgun.org ~all"' ]
+        TTL: 3600
+      - Name: mailo._domainkey.timweber.name.
+        Type: TXT
+        ResourceRecords: [ '"k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8o0Yx7pADJvbfzhfCLFvKJHFYu5kvhCQzv1YANeCp6quXf8UC3QfBsUIM5EEkDRHCsn6CnV+3Ki7pHBFCsF/tuRBtsRnp3TdXKDiff+n4RLZc9LqQJufum1GWzFNv4SmIQzc0wUWKp8Raau9D5yEKnykF5USyONYIdYUxIdrdHwIDAQAB"' ]
+        TTL: 3600
+
+  # DNS records with the dash
+  DashRecords:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      Comment: tim-weber.name
+      HostedZoneId: !Ref DashZone
+      RecordSets:
+      # The redirect to "without the dash"
+      - Name: tim-weber.name.
+        Type: A
+        AliasTarget:
+          HostedZoneId: Z1BKCTXD74EZPE # ID for S3 in eu-west-1
+          DNSName: !Sub s3-website-${AWS::Region}.amazonaws.com
+      # The www. redirect
+      - Name: www.tim-weber.name.
+        Type: CNAME
+        ResourceRecords:
+        - !Sub www.timweber.name.s3-website-${AWS::Region}.amazonaws.com
+        TTL: 3600
+      # Currently, Uberspace is the MX
+      # TODO: move to AWS
+      - Name: tim-weber.name.
+        Type: MX
+        ResourceRecords:
+        - 10 eridanus.uberspace.de
+        TTL: 3600
+      # Mailgun records
+      - Name: tim-weber.name.
+        Type: TXT
+        ResourceRecords: [ '"v=spf1 include:mailgun.org ~all"' ]
+        TTL: 3600
+      - Name: krs._domainkey.tim-weber.name.
+        Type: TXT
+        ResourceRecords: [ '"k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpcPxNMVJ6WBug2i2BSnUNytQRBNtJCa91HQTGWgQ/dihywg+dBEJ+9PtzNKZhEYDf2GCyhCPzKlHx5WinsgLVXnB0CncqgKbaTOkPa8+yJN+87Lji3NlycdN5SFvXO9w7qKoC4LHQYBc6aRDCAzU/hJh0+Qgt/7cfNHBOWbhpeQIDAQAB"' ]
+        TTL: 3600
