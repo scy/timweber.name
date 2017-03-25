@@ -80,12 +80,12 @@ Resources:
         ResourceRecords:
         - !Sub www.timweber.name.s3-website-${AWS::Region}.amazonaws.com
         TTL: 3600
-      # Currently, Uberspace is the MX
-      # TODO: move to Mailgun, then AWS
+      # Mailgun is the MX
       - Name: timweber.name.
         Type: MX
         ResourceRecords:
-        - 10 eridanus.uberspace.de
+        - 10 mxa.mailgun.org.
+        - 10 mxb.mailgun.org.
         TTL: 3600
       # Mailgun records
       - Name: timweber.name.
@@ -116,12 +116,12 @@ Resources:
         ResourceRecords:
         - !Sub www.timweber.name.s3-website-${AWS::Region}.amazonaws.com
         TTL: 3600
-      # Currently, Uberspace is the MX
-      # TODO: move to AWS
+      # Mailgun is the MX
       - Name: tim-weber.name.
         Type: MX
         ResourceRecords:
-        - 10 eridanus.uberspace.de
+        - 10 mxa.mailgun.org.
+        - 10 mxb.mailgun.org.
         TTL: 3600
       # Mailgun records
       - Name: tim-weber.name.
