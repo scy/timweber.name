@@ -3,17 +3,33 @@ Description: timweber.name and tim-weber.name
 
 Resources:
 
-  # This bucket servers timweber.name
-  ContentBucket:
-    Type: AWS::S3::Bucket
+  # A CloudFormation distribution that provides https://scy.github.io/timweber.name/ at https://timweber.name/
+  CFDistribution:
+    Type: AWS::CloudFront::Distribution
     Properties:
-      BucketName: timweber.name
-      AccessControl: PublicRead
-      WebsiteConfiguration:
-        IndexDocument: index.html
-      Tags:
-      - Key: Project
-        Value: timweber
+      DistributionConfig:
+        Enabled: true
+        Aliases: [ timweber.name ]
+        HttpVersion: http2
+        PriceClass: PriceClass_100 # el cheapo
+        Origins:
+        - Id: GitHub
+          DomainName: scy.github.io
+          OriginPath: /timweber.name
+          CustomOriginConfig:
+            OriginProtocolPolicy: https-only
+        DefaultRootObject: index.html
+        DefaultCacheBehavior:
+          TargetOriginId: GitHub
+          Compress: true
+          ForwardedValues:
+            QueryString: false
+          ViewerProtocolPolicy: redirect-to-https
+        ViewerCertificate:
+          # A certificate I registered for timweber.name
+          AcmCertificateArn: arn:aws:acm:us-east-1:859949227357:certificate/b0f87d46-81fe-4d75-8145-570757230488
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1
 
   # This bucket redirects www.timweber.name to timweber.name (without www.)
   WWWRedirectBucket:
@@ -79,12 +95,12 @@ Resources:
       Comment: timweber.name
       HostedZoneId: !Ref Zone
       RecordSets:
-      # The S3 bucket hosting the website
+      # Alias timweber.name to CloudFront
       - Name: timweber.name.
         Type: A
         AliasTarget:
-          HostedZoneId: Z1BKCTXD74EZPE # ID for S3 in eu-west-1
-          DNSName: !Sub s3-website-${AWS::Region}.amazonaws.com
+          HostedZoneId: Z2FDTNDATAQYW2 # global ID for CloudFormation
+          DNSName: !GetAtt CFDistribution.DomainName
       # The www. redirect
       - Name: www.timweber.name.
         Type: CNAME
