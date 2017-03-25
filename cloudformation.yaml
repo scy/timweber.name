@@ -3,6 +3,18 @@ Description: timweber.name and tim-weber.name
 
 Resources:
 
+  # This bucket servers timweber.name
+  ContentBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: timweber.name
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+      Tags:
+      - Key: Project
+        Value: timweber
+
   # This bucket redirects www.timweber.name to timweber.name (without www.)
   WWWRedirectBucket:
     Type: AWS::S3::Bucket
@@ -67,13 +79,12 @@ Resources:
       Comment: timweber.name
       HostedZoneId: !Ref Zone
       RecordSets:
-      # Currently, the content is at Uberspace
-      # TODO: move to AWS
+      # The S3 bucket hosting the website
       - Name: timweber.name.
         Type: A
-        ResourceRecords:
-        - 82.98.87.120
-        TTL: 3600
+        AliasTarget:
+          HostedZoneId: Z1BKCTXD74EZPE # ID for S3 in eu-west-1
+          DNSName: !Sub s3-website-${AWS::Region}.amazonaws.com
       # The www. redirect
       - Name: www.timweber.name.
         Type: CNAME
