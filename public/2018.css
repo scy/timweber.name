@@ -1,0 +1,93 @@
+body {
+    background: #ccc;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    transition: text-shadow 1s;
+}
+
+a.twitter {
+    color: #1da1f2;
+}
+
+a.github {
+    color: #fff;
+}
+
+a.so {
+    color: #f48024;
+}
+
+a.cv {
+    color: #e1ecf4;
+}
+
+a.xing {
+    color: #b0d400;
+}
+
+a.email {
+    color: #f5f5dc;
+}
+
+a:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1);
+}
+
+#card {
+    background: #24292e;
+    color: #efece7;
+    width: 25em;
+    margin: 5em auto;
+    padding: 1.2em;
+    box-shadow: 4px 3px 23px 0 rgba(50, 50, 50, 0.75);
+    transform: rotate(-2deg);
+}
+
+h1, h2 {
+    margin: 0.2em 0;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 150%;
+}
+
+h2 {
+    font-size: 100%;
+}
+
+#card img {
+    position: absolute;
+    top: 1.2em;
+    right: 1.2em;
+    border: 1px solid #bdbab5;
+    width: 3.5em;
+    height: 3.5em;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    margin: 3em 3em 1em;
+}
+
+ul {
+    margin: 0.7em 0;
+    padding: 0;
+    text-align: center;
+}
+
+li {
+    display: inline;
+    list-style-type: none;
+    margin: 0 0.8em;
+}
+
+ul.secondary {
+    font-size: 90%;
+}
