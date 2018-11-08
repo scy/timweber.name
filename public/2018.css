@@ -182,6 +182,11 @@ footer, ul.secondary {
     h1, h2 {
         color: #000;
     }
+    hr {
+        background-image: none;
+        height: 0;
+        border: 0.5pt solid #ccc;
+    }
     #card ul {
         text-align: left;
         list-style-type: square;
