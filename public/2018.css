@@ -48,8 +48,10 @@ a:hover {
     width: 25em;
     margin: 5em auto;
     padding: 1.2em;
+    position: absolute;
+    left: 50%;
     box-shadow: 4px 3px 23px 0 rgba(50, 50, 50, 0.75);
-    transform: rotate(-2deg);
+    transform: translateX(-50%) rotate(-2deg);
     animation: 0.75s ease-out 0s 1 throw-card;
 }
 
@@ -100,9 +102,9 @@ ul.secondary {
 
 @keyframes throw-card {
     0% {
-        transform: translateX(-80%) translateY(-200%) rotate(160deg);
+        transform: translateX(-130%) translateY(-200%) rotate(160deg);
     }
     100% {
-        transform: translateX(0%) translateY(0%) rotate(-2deg);
+        transform: translateX(-50%) translateY(0%) rotate(-2deg);
     }
 }
