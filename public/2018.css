@@ -133,6 +133,9 @@ footer, ul.secondary {
 
 /* Full experience: "Throw" animation, slight rotation, shadow. */
 @media (min-width: 30em) {
+    body {
+        overflow-x: hidden;
+    }
     #card {
         width: 25em;
         margin-left: auto;
