@@ -69,9 +69,7 @@ h2 {
 }
 
 #card img {
-    position: absolute;
-    top: 1.2em;
-    right: 1.2em;
+    float: right;
     border: 1px solid #bdbab5;
     width: 3.5em;
     height: 3.5em;
