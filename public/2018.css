@@ -30,8 +30,12 @@ a.cv {
     color: #e1ecf4;
 }
 
-a.xing {
-    color: #b0d400;
+a.linkedin {
+    color: #0077b5;
+}
+
+a.linkedin span {
+    color: #fff;
 }
 
 a.email {
